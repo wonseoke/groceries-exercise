@@ -2,6 +2,7 @@
 
 #from pprint import pprint
 
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -25,7 +26,27 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
+#print(products)
 # pprint(products)
 
 # TODO: write some Python code here to produce the desired output
+
+# To provide data with products name and prices:
+
+#import operator
+#products_by_name = sorted(products, key=operator.itemgetter('name'))
+
+print("--------------")
+print("THERE ARE", len(products), "PRODUCTS")
+print("--------------")
+
+def sort_by_name(any_product):
+    return any_product["name"]
+
+sorted_products = sorted(products, key=sort_by_name)
+
+
+for p in sorted_products:
+    #price_usd = p["price"]
+    price_usd = " (${0:.2f})".format(p["price"])
+    print(" + " + p["name"] + price_usd)
